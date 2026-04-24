@@ -33,6 +33,7 @@ export const LiquidCard = memo(
         }}
         // biome-ignore lint/suspicious/noExplicitAny: MotiView typing conflict with NativeWind
         {...(props as any)}
+        style={{ pointerEvents: "auto" }}
         className={cn(
           "p-6 rounded-3xl border border-white/10 shadow-2xl overflow-hidden",
           glass ? "bg-card/80 backdrop-blur-xl" : "bg-card",

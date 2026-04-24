@@ -19,6 +19,7 @@ export const Card = memo(
     return (
       <View
         className={`p-6 rounded-3xl border border-white/10 shadow-2xl ${variantStyles[variant](glass)} ${className}`}
+        style={{ pointerEvents: "auto" }}
       >
         {children}
       </View>

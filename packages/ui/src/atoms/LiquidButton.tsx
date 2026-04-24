@@ -59,6 +59,7 @@ export const LiquidButton = memo(
         <TouchableOpacity
           onPress={onPress}
           disabled={isInteractionDisabled}
+          style={{ pointerEvents: isInteractionDisabled ? "none" : "auto" }}
           accessibilityRole="button"
           accessibilityLabel={accessibilityLabel || title}
           accessibilityState={{
