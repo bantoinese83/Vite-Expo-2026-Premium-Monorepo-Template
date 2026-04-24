@@ -1,0 +1,22 @@
+{
+  "name": "@repo/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "files": [
+    "base.json",
+    "react-library.json",
+    "nextjs.json",
+    "vite.json",
+    "expo.json"
+  ],
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "expo": "~54.0.0"
+  },
+  "exports": {
+    "./base.json": "./base.json",
+    "./react-library.json": "./react-library.json",
+    "./vite.json": "./vite.json",
+    "./expo.json": "./expo.json"
+  }
+}

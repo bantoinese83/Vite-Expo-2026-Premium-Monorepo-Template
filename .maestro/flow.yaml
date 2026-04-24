@@ -1,0 +1,5 @@
+appId: com.monorepo.app
+---
+- launchApp
+- assertVisible: "Welcome Back"
+- tapOn: "Explore Features"

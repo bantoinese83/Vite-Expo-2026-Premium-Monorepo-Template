@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "@repo/tailwind-config/theme.css";
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+  }
+}
