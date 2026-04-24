@@ -1,3 +1,4 @@
+import "@repo/api/src/i18n";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Sentry from "@sentry/react-native";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";

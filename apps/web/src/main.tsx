@@ -5,6 +5,7 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import posthog from "posthog-js";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "@repo/api/src/i18n";
 import App from "./App";
 import "./global.css";
 

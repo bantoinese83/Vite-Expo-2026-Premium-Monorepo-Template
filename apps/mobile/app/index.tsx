@@ -1,7 +1,6 @@
 import { useSubscription, useUser } from "@repo/api";
 import { feedback } from "@repo/api/src/feedback";
-import {
-  Button, Card, FeatureGate, InfoSection, LiquidSkeleton, Paywall } from "@repo/ui";
+import { Button, Card, FeatureGate, InfoSection, LiquidSkeleton, Paywall } from "@repo/ui";
 import { useCallback, useEffect } from "react";
 import { Alert, SafeAreaView, ScrollView, StatusBar, Text, View } from "react-native";
 

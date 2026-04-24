@@ -3,6 +3,7 @@ import { z } from "zod";
 
 export * from "./env";
 export * from "./subscriptions";
+export * from "./i18n";
 
 export const UserSchema = z.object({
   id: z.string(),

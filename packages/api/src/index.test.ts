@@ -1,4 +1,16 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
+
+// Mock external dependencies that fail in test environments
+vi.mock("react-native", () => ({ Platform: { OS: "ios" } }));
+vi.mock("expo-haptics", () => ({
+  notificationAsync: vi.fn(),
+  impactAsync: vi.fn(),
+  selectionAsync: vi.fn(),
+  NotificationFeedbackType: { Success: "success" },
+  ImpactFeedbackStyle: { Medium: "medium" },
+}));
+vi.mock("better-auth", () => ({ betterAuth: vi.fn().mockReturnValue({}) }));
+
 import { UserSchema, fetchUser } from "./index";
 
 describe("UserSchema", () => {
