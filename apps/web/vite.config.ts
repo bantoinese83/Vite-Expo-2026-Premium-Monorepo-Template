@@ -7,7 +7,10 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   define: {
     __DEV__: process.env.NODE_ENV !== "production",
-    "process.env": {},
+    "process.env": {
+      NODE_ENV: process.env.NODE_ENV || "development",
+      EXPO_OS: "web",
+    },
     global: "window",
   },
   resolve: {

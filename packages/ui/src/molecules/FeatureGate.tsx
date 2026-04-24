@@ -19,10 +19,11 @@ export const FeatureGate = memo(
 
     return (
       <View className="relative">
-        <View className="opacity-20 pointer-events-none" aria-hidden={true}>
+        <View className="opacity-20" style={{ pointerEvents: "none" }} aria-hidden={true}>
           {children}
         </View>
         <View className="absolute inset-0 items-center justify-center p-4">
+          {" "}
           <Paywall
             title={title}
             description={description}

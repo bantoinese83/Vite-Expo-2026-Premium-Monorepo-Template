@@ -18,9 +18,12 @@ Sentry.init({
   replaysOnErrorSampleRate: 1.0,
 });
 
-posthog.init(process.env.VITE_POSTHOG_KEY || "phc_dummy_key", {
-  api_host: "https://app.posthog.com",
-});
+const posthogKey = process.env.VITE_POSTHOG_KEY;
+if (posthogKey && posthogKey !== "phc_dummy_key") {
+  posthog.init(posthogKey, {
+    api_host: "https://app.posthog.com",
+  });
+}
 
 const queryClient = new QueryClient({
   defaultOptions: {
