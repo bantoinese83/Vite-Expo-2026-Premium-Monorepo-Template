@@ -31,6 +31,7 @@ export const LiquidCard = memo(
           delay,
           easing: (t) => t * (2 - t), // Subtle ease out
         }}
+        // biome-ignore lint/suspicious/noExplicitAny: MotiView typing conflict with NativeWind
         {...(props as any)}
         className={cn(
           "p-6 rounded-3xl border border-white/10 shadow-2xl overflow-hidden",

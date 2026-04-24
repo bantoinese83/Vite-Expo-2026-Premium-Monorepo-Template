@@ -1,6 +1,7 @@
 import { useAppSubscription, useUser } from "@repo/api";
 import { feedback } from "@repo/api/src/feedback";
 import {
+  AIAssistantCard,
   Button,
   Card,
   FeatureGate,
@@ -9,7 +10,7 @@ import {
   Paywall,
   PremiumFeatureCard,
 } from "@repo/ui";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import {
   Alert,
   SafeAreaView,
@@ -23,6 +24,9 @@ import {
 const SCROLL_VIEW_CONTENT_STYLE = { paddingBottom: 40 };
 
 export default function Home() {
+  const [aiInsight, setAiInsight] = useState<string | undefined>();
+  const [isAiLoading, setIsAiLoading] = useState(false);
+
   const {
     data: user,
     isLoading: isUserLoading,
@@ -32,7 +36,25 @@ export default function Home() {
 
   const { isPro, isLoading: isSubLoading, subError, setPro, handleRetry } = useAppSubscription();
 
+  const handleAskAI = useCallback(async () => {
+    feedback.light();
+    setIsAiLoading(true);
+    try {
+      // Simulation of AI processing
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setAiInsight(
+        "Consider using Neon's branching for your Drizzle migrations to ensure zero-downtime schema updates.",
+      );
+      feedback.success();
+    } catch (_e) {
+      Alert.alert("AI Error", "Failed to reach the AI engine.");
+    } finally {
+      setIsAiLoading(false);
+    }
+  }, []);
+
   const handleUpgrade = useCallback(() => {
+    // In a real app, trigger RevenueCat here
     feedback.impact();
     Alert.alert("Upgrade", "In a real app, this would open the App Store checkout.", [
       { text: "Cancel", style: "cancel" },
@@ -101,6 +123,17 @@ export default function Home() {
               />
             </Card>
           )}
+
+          {/* AI Assistant Section */}
+          <View className="space-y-4">
+            <AIAssistantCard isLoading={isAiLoading} insight={aiInsight} />
+            <Button
+              title={aiInsight ? "Refresh Analysis" : "Ask AI Architect"}
+              onPress={handleAskAI}
+              isLoading={isAiLoading}
+              variant="secondary"
+            />
+          </View>
 
           {/* Quick Actions */}
           <Card className="p-8">

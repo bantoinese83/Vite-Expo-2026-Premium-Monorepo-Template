@@ -9,3 +9,4 @@ export * from "./molecules/Paywall";
 export * from "./molecules/FeatureGate";
 export * from "./molecules/PremiumFeatureCard";
 export * from "./organisms/ErrorBoundary";
+export * from "./organisms/AIAssistantCard";

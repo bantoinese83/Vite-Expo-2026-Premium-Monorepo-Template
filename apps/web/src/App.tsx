@@ -1,11 +1,36 @@
 /// <reference types="nativewind/types" />
 import { useAppSubscription } from "@repo/api";
-import { Button, Card, FeatureGate, InfoSection, PremiumFeatureCard } from "@repo/ui";
-import { useCallback } from "react";
+import {
+  AIAssistantCard,
+  Button,
+  Card,
+  FeatureGate,
+  InfoSection,
+  PremiumFeatureCard,
+} from "@repo/ui";
+import { useCallback, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 
 function App() {
+  const [aiInsight, setAiInsight] = useState<string | undefined>();
+  const [isAiLoading, setIsAiLoading] = useState(false);
+
   const { isPro, isLoading, subError, setPro, handleRetry } = useAppSubscription();
+
+  const handleAskAI = useCallback(async () => {
+    setIsAiLoading(true);
+    try {
+      // Simulation of AI processing
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setAiInsight(
+        "For global edge performance, ensure your Drizzle queries are using the 'neon-http' driver to avoid TCP connection overhead in serverless environments.",
+      );
+    } catch (_e) {
+      window.alert("AI Error: Failed to reach the 2026 engine.");
+    } finally {
+      setIsAiLoading(false);
+    }
+  }, []);
 
   const handleUpgrade = useCallback(() => {
     // In a real app, trigger Stripe here
@@ -62,6 +87,20 @@ function App() {
             />
           </Card>
         )}
+
+        {/* AI Assistant Section */}
+        <View className="max-w-3xl mx-auto w-full space-y-6">
+          <AIAssistantCard isLoading={isAiLoading} insight={aiInsight} />
+          <View className="items-center">
+            <Button
+              title={aiInsight ? "Generate New Insight" : "Activate AI Architect"}
+              onPress={handleAskAI}
+              isLoading={isAiLoading}
+              variant="secondary"
+              className="px-12"
+            />
+          </View>
+        </View>
 
         {/* Feature Grid */}
         <View className="grid grid-cols-1 md:grid-cols-2 gap-8">
