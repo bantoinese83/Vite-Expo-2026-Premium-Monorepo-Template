@@ -1,6 +1,8 @@
+import { getDb } from "./index";
 import "dotenv/config";
 
 async function main() {
+  const db = getDb();
   console.log("🌱 Seeding database...");
 
   // Example seeding logic:

@@ -8,7 +8,19 @@ import type { z } from "zod";
  * Handles edge cases like malformed JSON, model refusal, and network failures.
  */
 
-export const defaultModel: LanguageModel = google("gemini-1.5-pro-latest");
+/**
+ * Lazy-initialized default model.
+ * Prevents crashes during module evaluation if environment variables are missing.
+ */
+export const getModel = (): LanguageModel => {
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
+  if (!apiKey && process.env.NODE_ENV === "production") {
+    throw new Error("GOOGLE_GENERATIVE_AI_API_KEY is required in production.");
+  }
+
+  return google("gemini-1.5-pro-latest");
+};
 
 export interface AIRequestOptions {
   prompt: string;
@@ -22,8 +34,9 @@ export interface AIRequestOptions {
  */
 export async function completeText(options: AIRequestOptions) {
   try {
+    const model = getModel();
     const { text } = await generateText({
-      model: defaultModel,
+      model,
       system:
         options.system || "You are a helpful assistant in a high-performance 2026 application.",
       prompt: options.prompt,
