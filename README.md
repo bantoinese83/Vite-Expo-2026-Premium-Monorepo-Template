@@ -1,12 +1,36 @@
 # 🚀 Vite + Expo 2026: Premium Monorepo Template
 
-[![Bun](https://img.shields.io/badge/Runtime-Bun-black?style=for-the-badge&logo=bun)](https://bun.sh)
-[![Turborepo](https://img.shields.io/badge/Orchestration-Turbo-EF4444?style=for-the-badge&logo=turborepo)](https://turbo.build)
-[![Expo](https://img.shields.io/badge/Mobile-Expo_SDK_55-000020?style=for-the-badge&logo=expo)](https://expo.dev)
-[![Vite](https://img.shields.io/badge/Web-Vite_6-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+<div align="center">
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/lucide-react/lucide/main/icons/rocket.svg" width="100" height="100" alt="Logo" />
+  </p>
+  <p><strong>The ultimate high-performance, AI-native, cross-platform engine for 2026.</strong></p>
 
-> The ultimate 2026 starting point for building high-performance, AI-native, cross-platform applications. Build once, run everywhere, and monetize from day one.
+  [![Bun](https://img.shields.io/badge/Runtime-Bun-black?style=for-the-badge&logo=bun)](https://bun.sh)
+  [![Turborepo](https://img.shields.io/badge/Orchestration-Turbo-EF4444?style=for-the-badge&logo=turborepo)](https://turbo.build)
+  [![Expo](https://img.shields.io/badge/Mobile-Expo_SDK_55-000020?style=for-the-badge&logo=expo)](https://expo.dev)
+  [![Vite](https://img.shields.io/badge/Web-Vite_6-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)
+  [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+  [![CI](https://github.com/bantoinese83/Vite-Expo-2026-Premium-Monorepo-Template/actions/workflows/ci.yml/badge.svg?style=for-the-badge)](https://github.com/bantoinese83/Vite-Expo-2026-Premium-Monorepo-Template/actions)
+</div>
+
+---
+
+## 📖 Table of Contents
+- [💎 The "Liquid Metal" Vibe](#-the-liquid-metal-vibe)
+- [🧠 AI-Native Architecture](#-ai-native-architecture-repoai)
+- [🏗️ Elite Infrastructure](#️-elite-infrastructure)
+- [⚡ Quick Start](#-quick-start)
+- [🎯 Commercial UX Features](#-commercial-ux-features)
+- [🛠️ Turbo Generators](#️-turbo-generators)
+- [🗺️ Roadmap](#️-roadmap)
+- [🙋 FAQ & Troubleshooting](#-faq--troubleshooting)
+- [🤝 Contributing](#-contributing)
+
+---
+
+## ✨ Why this project exists?
+Building a high-quality cross-platform app in 2026 requires more than just sharing components. It requires **unified logic**, **AI integration**, and **monetization foundations** from day one. This template eliminates weeks of boilerplate by providing an elite, pre-configured stack that actually works at scale.
 
 ---
 
@@ -18,6 +42,9 @@ Experience a design system built for the future. Translucent glassmorphism, 60fp
 | **Web** 🌐 | Vite + Tailwind v4 | Moti (physics) |
 | **Mobile** 📱 | Expo + NativeWind v4 | Reanimated 3 |
 | **Shared** 🔗 | `@repo/ui` | Unified Atoms |
+
+> [!TIP]
+> Check out the live demo at [demo.monorepo-2026.app](https://example.com) (coming soon).
 
 ---
 
@@ -42,10 +69,10 @@ graph TD
 ## 🏗️ Elite Infrastructure
 
 ### 🛡️ Core Stack
-- **Database**: Drizzle ORM + Neon HTTP (Optimized for Vercel Edge/Cloudflare Workers).
-- **Auth**: Better Auth (Pre-configured for Edge + Mobile deep linking).
+- **Database**: Drizzle ORM + Neon HTTP (Optimized for Edge).
+- **Auth**: Better Auth (Pre-configured for Web + Mobile deep linking).
 - **Monetization**: RevenueCat (Mobile) + Stripe (Web) with shared `useAppSubscription` logic.
-- **DX Engine**: Biome (10x faster than ESLint/Prettier) + Turbo Generators.
+- **DX Engine**: Biome (10x faster) + Turbo Generators.
 
 ### 📂 Workspace Map
 ```text
@@ -77,7 +104,6 @@ bun run setup
 ```bash
 bun dev
 ```
-*Starts Web, Mobile, and all package watchers simultaneously.*
 
 ### 3. Quality Gate
 ```bash
@@ -88,22 +114,43 @@ bun test          # Vitest suite
 
 ---
 
-## 🎯 Commercial UX Features
-- **Tactical Haptics**: Native vibrations for mobile interactions.
-- **Premium Skeletons**: Shimmer loaders for zero layout shift.
-- **Feature Gates**: Conditional UI components to upsell Pro features.
-- **i18n Ready**: Multi-language support out of the box (English/Spanish included).
+## 🗺️ Roadmap
+- [x] **Phase 1**: Core AI & DB Architecture.
+- [x] **Phase 2**: Liquid Metal Design System.
+- [x] **Phase 3**: Biome Migration & DX Hardening.
+- [ ] **Phase 4**: Native Push Notification Service (via Expo).
+- [ ] **Phase 5**: Shared Video Primitive (via expo-video).
+- [ ] **Phase 6**: Advanced AI Streaming Components.
 
 ---
 
-## 🛠️ Turbo Generators
-Scaffold atomic components in seconds:
-```bash
-bun turbo gen ui-component
-```
-*Scaffolds a new component in `packages/ui` with full animations and exports.*
+## 🙋 FAQ & Troubleshooting
+
+**Q: Why Biome instead of Prettier/ESLint?**
+A: Performance. Biome is significantly faster and provides a single, unified configuration for both linting and formatting.
+
+**Q: How do I add my AI keys?**
+A: Run `bun run setup` and update the generated `.env` with your `GOOGLE_GENERATIVE_AI_API_KEY`.
+
+**Q: Mobile deep-linking isn't working.**
+A: Ensure you've configured your scheme in `app.json` and matched it in your Better Auth configuration.
 
 ---
 
-## 📜 License
+## 🤝 Contributing
+Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) (coming soon) before submitting PRs.
+
+---
+
+## 📬 Contact & Support
+- **Author**: Bryan ([@mlabs](https://mlabs.ai))
+- **Support**: Open a [GitHub Issue](https://github.com/bantoinese83/Vite-Expo-2026-Premium-Monorepo-Template/issues)
+- **Twitter**: [@monarchlabs](https://twitter.com/example)
+
+---
+
+## 📊 Repository Stats
+![Language Breakdown](https://img.shields.io/github/languages/top/bantoinese83/Vite-Expo-2026-Premium-Monorepo-Template?style=for-the-badge)
+![GitHub Stars](https://img.shields.io/github/stars/bantoinese83/Vite-Expo-2026-Premium-Monorepo-Template?style=for-the-badge)
+
 Built with ❤️ by elite developers for developers. **MIT Licensed.**
