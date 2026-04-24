@@ -4,6 +4,12 @@
   "private": true,
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
+  "exports": {
+    ".": "./src/index.tsx",
+    "./atoms/*": "./src/atoms/*.tsx",
+    "./molecules/*": "./src/molecules/*.tsx",
+    "./organisms/*": "./src/organisms/*.tsx"
+  },
   "scripts": {
     "lint": "biome check src",
     "type-check": "tsc --noEmit"

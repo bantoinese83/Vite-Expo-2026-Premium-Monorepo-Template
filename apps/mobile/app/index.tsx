@@ -1,5 +1,5 @@
 import { useAppSubscription, useUser } from "@repo/api";
-import { feedback } from "@repo/api/src/feedback";
+import { feedback } from "@repo/api/feedback";
 import {
   AIAssistantCard,
   Button,
