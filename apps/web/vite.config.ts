@@ -1,11 +1,10 @@
 import path from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import nativewind from "nativewind/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [react(), nativewind(), tailwindcss()],
+  plugins: [react(), tailwindcss()],
   define: {
     __DEV__: process.env.NODE_ENV !== "production",
     "process.env": {

@@ -37,8 +37,8 @@ const validateUserId = (id: string) => {
 const getMockUser = async (id: string): Promise<User> => {
   await new Promise((resolve) => setTimeout(resolve, API_DELAY));
 
-  // Simulated Edge Case: Network/Server failure
-  if (Math.random() < 0.05) {
+  // Simulated Edge Case: Network/Server failure (disabled in test)
+  if (Math.random() < 0.05 && process.env.NODE_ENV !== "test") {
     throw new Error("Simulated network timeout. Please try again.");
   }
 

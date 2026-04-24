@@ -19,7 +19,7 @@ export const getModel = (): LanguageModel => {
     throw new Error("GOOGLE_GENERATIVE_AI_API_KEY is required in production.");
   }
 
-  return google("gemini-1.5-pro-latest");
+  return google("gemini-2.5-flash-lite");
 };
 
 export interface AIRequestOptions {

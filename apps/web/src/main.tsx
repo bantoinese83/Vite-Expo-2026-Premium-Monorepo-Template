@@ -1,3 +1,4 @@
+import { GlobalErrorBoundary } from "@repo/ui";
 import * as Sentry from "@sentry/react";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { QueryClient } from "@tanstack/react-query";
@@ -37,8 +38,6 @@ const queryClient = new QueryClient({
 const persister = createSyncStoragePersister({
   storage: window.localStorage,
 });
-
-import { GlobalErrorBoundary } from "@repo/ui";
 
 // biome-ignore lint/style/noNonNullAssertion: Root element is required by React
 ReactDOM.createRoot(document.getElementById("root")!).render(
