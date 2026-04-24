@@ -1,0 +1,16 @@
+import { memo } from "react";
+import { View, Text, ViewProps } from "react-native";
+
+interface {{pascalCase name}}Props extends ViewProps {
+  // Add your props here
+}
+
+export const {{pascalCase name}} = memo(({ ...props }: {{pascalCase name}}Props) => {
+  return (
+    <View {...props}>
+      <Text>{{pascalCase name}} Component</Text>
+    </View>
+  );
+});
+
+{{pascalCase name}}.displayName = "{{pascalCase name}}";

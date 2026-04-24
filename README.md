@@ -5,17 +5,16 @@ A cutting-edge, high-performance monorepo architecture designed for the 2026 dev
 ## 🌟 Key Features
 
 - **Monorepo Orchestration**: Managed by [Turborepo](https://turbo.build/) for ultra-fast, cached task execution.
+- **AI-First Infrastructure**: 
+  - `@repo/ai`: Unified AI SDK abstraction (Gemini, OpenAI) with streaming support.
+- **Shared Data Layer**:
+  - `@repo/db`: Shared Drizzle ORM schema for Web & Edge.
 - **Universal Styling**: 
-  - **Web**: Powered by **Tailwind CSS v4** with the new zero-config Vite plugin.
-  - **Mobile**: Powered by **NativeWind v4** (Tailwind for React Native).
-  - **Shared Design Tokens**: Unified HSL-based design system across all platforms.
-- **Shared Architecture**:
-  - `@repo/ui`: Atomic design system with universal components.
-  - `@repo/api`: Shared business logic, schemas (Zod), and data hooks.
-  - `@repo/tsconfig`: Centralized, inherited TypeScript configurations for 100/100 quality.
-- **Performance First**:
+  - **Web**: Tailwind CSS v4 with zero-config Vite plugin.
+  - **Mobile**: NativeWind v4 with **Moti** for universal animations.
+- **Elite Developer Experience**:
+  - **Turbo Generators**: Scaffold components and packages instantly.
   - **Oxlint**: Near-instant linting (<20ms).
-  - **Vitest**: Lightning-fast unit testing.
   - **Bun**: High-performance runtime and package manager.
 
 ## 📂 Project Structure
@@ -23,12 +22,15 @@ A cutting-edge, high-performance monorepo architecture designed for the 2026 dev
 ```text
 ├── apps
 │   ├── web          # Vite + React (Tailwind v4)
-│   └── mobile       # Expo Router (NativeWind v4)
+│   └── mobile       # Expo Router (NativeWind v4 + Moti)
 ├── packages
-│   ├── ui           # Shared Atomic UI components
-│   ├── api          # Shared Zod schemas & API logic
+│   ├── ui           # Shared Atomic UI (with Liquid Metal components)
+│   ├── ai           # Unified AI SDK abstraction
+│   ├── db           # Shared Drizzle ORM schemas
+│   ├── api          # Shared business logic & hooks
 │   ├── tsconfig     # Shared TypeScript configurations
 │   └── tailwind-config # Centralized HSL tokens & theme definitions
+└── turbo            # Custom DX generators
 ```
 
 ## 🛠️ Getting Started

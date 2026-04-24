@@ -1,7 +1,7 @@
 /// <reference types="nativewind/types" />
 import { useCallback, useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
-import { Button, Card, InfoSection, Paywall, FeatureGate } from "@repo/ui";
+import { Button, Card, InfoSection, FeatureGate } from "@repo/ui";
 import { useSubscription } from "@repo/api";
 
 function App() {
