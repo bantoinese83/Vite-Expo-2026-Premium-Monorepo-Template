@@ -30,22 +30,27 @@ export async function completeText(options: AIRequestOptions) {
   return text;
 }
 
-/**
- * Structured data generation (Type-safe)
- */
-export async function generateObject<T extends z.ZodType>(schema: T, options: AIRequestOptions) {
-  // In a real implementation, you would use generateObject from 'ai'
-  // For this template, we'll return a helper that ensures Zod validation
-  const response = await completeText({
-    ...options,
-    system: `${options.system || ""}\n\nIMPORTANT: Return ONLY valid JSON that matches this schema: ${JSON.stringify(schema)}`,
-  });
-
+const parseAndValidate = <T extends z.ZodType>(schema: T, response: string) => {
   try {
     return schema.parse(JSON.parse(response));
   } catch (e) {
     throw new Error(`AI generated invalid schema: ${e}`);
   }
+};
+
+/**
+ * Structured data generation (Type-safe)
+ */
+export async function generateObject<T extends z.ZodType>(schema: T, options: AIRequestOptions) {
+  const promptWithSchema = {
+    ...options,
+    system: `${
+      options.system || ""
+    }\n\nIMPORTANT: Return ONLY valid JSON that matches this schema: ${JSON.stringify(schema)}`,
+  };
+
+  const response = await completeText(promptWithSchema);
+  return parseAndValidate(schema, response);
 }
 
 /**

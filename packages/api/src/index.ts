@@ -16,17 +16,23 @@ export type User = z.infer<typeof UserSchema>;
 
 const API_DELAY = 1000;
 
-export const fetchUser = async (id: string): Promise<User> => {
-  // Security: Validate ID format to prevent unexpected behavior or injection risks
-  const validatedId = z.string().min(1).parse(id);
+const validateUserId = (id: string) => {
+  return z.string().min(1).parse(id);
+};
 
+const getMockUser = async (id: string): Promise<User> => {
   await new Promise((resolve) => setTimeout(resolve, API_DELAY));
   return {
-    id: validatedId,
+    id,
     name: "Bryan 2026",
     email: "bryan@mlabs.ai",
     avatar: "https://github.com/mlabs.png",
   };
+};
+
+export const fetchUser = async (id: string): Promise<User> => {
+  const validatedId = validateUserId(id);
+  return getMockUser(validatedId);
 };
 
 export const useUser = (id: string) => {
