@@ -1,68 +1,109 @@
-# 🚀 Vite + Expo 2026 Premium Monorepo Template
+# 🚀 Vite + Expo 2026: Premium Monorepo Template
 
-A cutting-edge, high-performance monorepo architecture designed for the 2026 development landscape. Built with **Bun**, **Turborepo**, **Vite**, and **Expo SDK 55**.
+[![Bun](https://img.shields.io/badge/Runtime-Bun-black?style=for-the-badge&logo=bun)](https://bun.sh)
+[![Turborepo](https://img.shields.io/badge/Orchestration-Turbo-EF4444?style=for-the-badge&logo=turborepo)](https://turbo.build)
+[![Expo](https://img.shields.io/badge/Mobile-Expo_SDK_55-000020?style=for-the-badge&logo=expo)](https://expo.dev)
+[![Vite](https://img.shields.io/badge/Web-Vite_6-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## 🌟 Key Features
+> The ultimate 2026 starting point for building high-performance, AI-native, cross-platform applications. Build once, run everywhere, and monetize from day one.
 
-- **Monorepo Orchestration**: Managed by [Turborepo](https://turbo.build/) for ultra-fast, cached task execution.
-- **AI-First Infrastructure**: 
-  - `@repo/ai`: Unified AI SDK abstraction (Gemini, OpenAI) with streaming support.
-- **Shared Data Layer**:
-  - `@repo/db`: Shared Drizzle ORM schema for Web & Edge.
-- **Universal Styling**: 
-  - **Web**: Tailwind CSS v4 with zero-config Vite plugin.
-  - **Mobile**: NativeWind v4 with **Moti** for universal animations.
-- **Elite Developer Experience**:
-  - **Turbo Generators**: Scaffold components and packages instantly.
-  - **Oxlint**: Near-instant linting (<20ms).
-  - **Bun**: High-performance runtime and package manager.
+---
 
-## 📂 Project Structure
+## 💎 The "Liquid Metal" Vibe
+Experience a design system built for the future. Translucent glassmorphism, 60fps physics-based animations, and HSL-first tokens.
 
+| Platform | Rendering Engine | Animation Engine |
+| :--- | :--- | :--- |
+| **Web** 🌐 | Vite + Tailwind v4 | Moti (physics) |
+| **Mobile** 📱 | Expo + NativeWind v4 | Reanimated 3 |
+| **Shared** 🔗 | `@repo/ui` | Unified Atoms |
+
+---
+
+## 🧠 AI-Native Architecture (`@repo/ai`)
+In this template, AI isn't an addon—it's the core engine.
+
+```mermaid
+graph TD
+    A[Mobile/Web UI] --> B(@repo/api hooks)
+    B --> C(@repo/ai package)
+    C --> D{Google Gemini 1.5 Pro}
+    C --> E{Structured Zod Output}
+    D --> F[Active Architect Assistant]
+```
+
+- **Unified SDK**: Google Gemini 1.5 Pro + Vercel AI SDK.
+- **Type-Safe Prompts**: Centralized prompt registry with Zod validation.
+- **Active UI**: Integrated `AIAssistantCard` for real-time architectural insights.
+
+---
+
+## 🏗️ Elite Infrastructure
+
+### 🛡️ Core Stack
+- **Database**: Drizzle ORM + Neon HTTP (Optimized for Vercel Edge/Cloudflare Workers).
+- **Auth**: Better Auth (Pre-configured for Edge + Mobile deep linking).
+- **Monetization**: RevenueCat (Mobile) + Stripe (Web) with shared `useAppSubscription` logic.
+- **DX Engine**: Biome (10x faster than ESLint/Prettier) + Turbo Generators.
+
+### 📂 Workspace Map
 ```text
 ├── apps
-│   ├── web          # Vite + React (Tailwind v4)
-│   └── mobile       # Expo Router (NativeWind v4 + Moti)
+│   ├── web          # Vite + React (Ultra-fast hydration)
+│   └── mobile       # Expo Router (Full native speed)
 ├── packages
-│   ├── ui           # Shared Atomic UI (with Liquid Metal components)
-│   ├── ai           # Unified AI SDK abstraction
-│   ├── db           # Shared Drizzle ORM schemas
-│   ├── api          # Shared business logic & hooks
-│   ├── tsconfig     # Shared TypeScript configurations
-│   └── tailwind-config # Centralized HSL tokens & theme definitions
-└── turbo            # Custom DX generators
+│   ├── ui           # Shared "Liquid Metal" Design System
+│   ├── ai           # Centralized AI "Brain"
+│   ├── db           # Shared Schema & Migrations
+│   ├── api          # Business logic, i18n, & Hooks
+│   ├── tsconfig     # Strict mode configurations
+│   └── config       # Tailwind & Workspace presets
+└── scripts          # setup.sh (The "Day 0" magic)
 ```
 
-## 🛠️ Getting Started
+---
 
-### Prerequisites
-- [Bun](https://bun.sh/) (Required)
+## ⚡ Quick Start
 
-### Installation
+### 1. The "Day 0" Ignition
+Get your entire environment ready in one command:
 ```bash
-bun install
+bun run setup
 ```
+*This installs deps, creates your `.env`, and generates your DB schema.*
 
-### Development
-Start the entire stack (Web, Mobile, and Package watchers):
+### 2. Enter Flow State
 ```bash
 bun dev
 ```
+*Starts Web, Mobile, and all package watchers simultaneously.*
 
-### Quality Assurance
-Ensure 100/100 quality with a single command:
+### 3. Quality Gate
 ```bash
 bun type-check    # Strict TypeScript validation
-bun lint:ox       # Ultra-fast linting
-bun test          # Run Vitest suite
+bun lint          # Instant Biome checks
+bun test          # Vitest suite
 ```
 
-## 🎨 Design System
+---
 
-The template features a **Premium "Liquid Metal" Dark Mode** system:
-- **HSL Tokens**: Easily customize your brand by updating `packages/tailwind-config/theme.css`.
-- **Glassmorphism**: Built-in support for translucent, blurred surfaces.
-- **Type-Safe Classes**: Full IntelliSense support for Tailwind classes even in shared components.
+## 🎯 Commercial UX Features
+- **Tactical Haptics**: Native vibrations for mobile interactions.
+- **Premium Skeletons**: Shimmer loaders for zero layout shift.
+- **Feature Gates**: Conditional UI components to upsell Pro features.
+- **i18n Ready**: Multi-language support out of the box (English/Spanish included).
+
+---
+
+## 🛠️ Turbo Generators
+Scaffold atomic components in seconds:
+```bash
+bun turbo gen ui-component
+```
+*Scaffolds a new component in `packages/ui` with full animations and exports.*
+
+---
 
 ## 📜 License
-MIT
+Built with ❤️ by elite developers for developers. **MIT Licensed.**

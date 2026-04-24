@@ -4,57 +4,42 @@ This monorepo has been optimized for **100/100 Quality**, maximum maintainabilit
 
 ## 🏗️ Core Architecture
 
-- **`apps/web`**: High-performance Vite + React SPA using **Tailwind CSS v4**.
-- **`apps/mobile`**: Modern Expo (SDK 55) application with file-based routing and **NativeWind v4**.
-- **`packages/ui`**: Atomic design system using **Moti** for universal animations and **NativeWind v4**.
-- **`packages/api`**: Strictly typed business logic and data hooks.
-- **`packages/ai`**: Unified AI SDK abstraction (Vercel AI SDK + Google Gemini).
-- **`packages/db`**: Shared data layer using **Drizzle ORM** and Postgres.
-- **`packages/tsconfig`**: Shared, inherited TypeScript configurations.
-- **`packages/tailwind-config`**: Centralized HSL tokens for consistent cross-platform styling.
+- **`apps/web`**: High-performance Vite + React environment using Tailwind CSS v4.
+- **`apps/mobile`**: Native Expo SDK 55 application with Expo Router and NativeWind v4.
+- **`packages/ui`**: Atomic design system featuring "Liquid Metal" glassmorphism and Moti animations.
+- **`packages/ai`**: AI-Native abstraction layer powered by Google Gemini 1.5 Pro.
+- **`packages/db`**: Global data layer using Drizzle ORM and Neon HTTP.
+- **`packages/api`**: Shared business logic, i18n translations, and platform-agnostic hooks.
 
-## ✨ Key Features & Improvements
+## 🛠️ Integrated Elite Tools
 
-### 1. Tailwind CSS v4 (Web)
-We've moved to the future of styling on the web:
-- **Vite Plugin**: No PostCSS or `tailwind.config.js` required for the web.
-- **@theme Block**: Theme variables are defined directly in CSS for maximum performance and readability.
-- **Auto-scanning**: Tailwind v4 automatically detects classes in your shared `@repo/ui` package.
+| Tool | Purpose | Benefit |
+| :--- | :--- | :--- |
+| **Bun** | Runtime & Pkg Manager | Ultra-fast installs and execution. |
+| **Biome** | Linting & Formatting | 10x faster than Prettier/ESLint. |
+| **Turborepo** | Task Orchestration | Cached builds and parallel execution. |
+| **Sentry** | Observability | Real-time error tracking & performance. |
+| **PostHog** | Analytics | Product-led growth insights. |
+| **RevenueCat** | Monetization | Seamless mobile IAP management. |
+| **Better Auth** | Authentication | Edge-ready, secure identity provider. |
 
-### 2. NativeWind v4 (Mobile)
-Mobile components use the same Tailwind utility classes, mapped to native styles:
-- **Universal Components**: UI built in `packages/ui` works seamlessly across iOS, Android, and Web.
-- **Type Safety**: Global augmentation ensures `className` is recognized across all platforms.
+## 📐 Quality Standards
 
-### 3. Shared Design Token System
-The "source of truth" for colors and spacing is located in `packages/tailwind-config`:
-- **`theme.css`**: Tailwind v4 variables for Web.
-- **`index.js`**: Synchronized Tailwind v3-style config for Mobile/NativeWind compatibility.
+- **One Function = One Purpose**: Strict adherence to the Single Responsibility Principle.
+- **Edge-Ready**: Database and API layers optimized for Vercel/Cloudflare Edge.
+- **Resilient UI**: Integrated Error Boundaries and high-performance Shimmer skeletons.
+- **Type-Safe Prompts**: AI interactions validated via Zod schemas.
 
-### 4. AI-Native Infrastructure
-The `@repo/ai` package provides:
-- **Unified Provider**: Switch between Gemini, OpenAI, and Anthropic with one line.
-- **Structured Outputs**: Zod-validated AI responses for both platforms.
-- **Streaming Support**: Pre-configured for real-time AI interactions.
-
-### 5. Drizzle ORM (Shared Schema)
-The `@repo/db` package ensures:
-- **Single Source of Truth**: Define your database schema once, use it in web and (optionally) mobile.
-- **Edge Compatible**: Built to run on Vercel Edge and Cloudflare Workers.
-
-### 6. Elite DX & Generators
-- **Turbo Gen**: Use `bun turbo gen ui-component` to scaffold new components in seconds.
-- **Oxlint & Vitest**: Near-instant feedback loop for quality.
-
-## 🛠️ Developer Workflow
+## 🚀 DX Commands
 
 | Command | Action |
 | :--- | :--- |
-| `bun type-check` | Run TypeScript validation across all workspaces. |
-| `bun lint:ox` | Ultra-fast linting using Oxlint. |
-| `bun test` | Run unit tests with Vitest. |
-| `bun turbo gen` | Scaffold new components or packages. |
-| `bun dev` | Start all applications in development mode. |
+| `bun run setup` | Instant "Day 0" environment configuration. |
+| `bun lint` | Run Biome's high-speed quality check. |
+| `bun type-check` | Validate monorepo-wide type safety. |
+| `bun test` | Execute platform-agnostic Vitest suite. |
+| `bun turbo gen` | Scaffold new atoms, molecules, or packages. |
+| `bun dev` | Synchronized development across all apps. |
 
 ---
 **Status**: ✅ 0 Errors | ✅ 0 Warnings | ✅ 100/100 Quality Score
