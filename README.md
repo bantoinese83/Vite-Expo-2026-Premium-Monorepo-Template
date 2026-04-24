@@ -53,11 +53,11 @@ In this template, AI isn't an addon—it's the core engine.
 
 ```mermaid
 graph TD
-    A[Mobile/Web UI] --> B(@repo/api hooks)
-    B --> C(@repo/ai package)
-    C --> D{Google Gemini 1.5 Pro}
-    C --> E{Structured Zod Output}
-    D --> F[Active Architect Assistant]
+    A["Mobile/Web UI"] --> B("@repo/api hooks")
+    B --> C("@repo/ai package")
+    C --> D{"Google Gemini 1.5 Pro"}
+    C --> E{"Structured Zod Output"}
+    D --> F["Active Architect Assistant"]
 ```
 
 - **Unified SDK**: Google Gemini 1.5 Pro + Vercel AI SDK.
