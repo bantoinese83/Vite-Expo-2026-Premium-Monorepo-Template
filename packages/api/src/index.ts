@@ -4,6 +4,7 @@ import { z } from "zod";
 export * from "./env";
 export * from "./subscriptions";
 export * from "./i18n";
+export * from "./hooks/useAppSubscription";
 
 export const UserSchema = z.object({
   id: z.string(),

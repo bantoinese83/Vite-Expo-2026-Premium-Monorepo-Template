@@ -7,4 +7,5 @@ export * from "./atoms/Image";
 export * from "./molecules/InfoSection";
 export * from "./molecules/Paywall";
 export * from "./molecules/FeatureGate";
+export * from "./molecules/PremiumFeatureCard";
 export * from "./organisms/ErrorBoundary";

@@ -1,7 +1,15 @@
-import { useSubscription, useUser } from "@repo/api";
+import { useAppSubscription, useUser } from "@repo/api";
 import { feedback } from "@repo/api/src/feedback";
-import { Button, Card, FeatureGate, InfoSection, LiquidSkeleton, Paywall } from "@repo/ui";
-import { useCallback, useEffect } from "react";
+import {
+  Button,
+  Card,
+  FeatureGate,
+  InfoSection,
+  LiquidSkeleton,
+  Paywall,
+  PremiumFeatureCard,
+} from "@repo/ui";
+import { useCallback } from "react";
 import {
   Alert,
   SafeAreaView,
@@ -21,33 +29,21 @@ export default function Home() {
     isError: isUserError,
     refetch: refetchUser,
   } = useUser("1");
-  const {
-    isPro,
-    isLoading: isSubLoading,
-    error: subError,
-    setPro,
-    checkSubscription,
-    resetError,
-  } = useSubscription();
 
-  useEffect(() => {
-    checkSubscription();
-  }, [checkSubscription]);
-
-  const handleRetry = useCallback(() => {
-    if (isUserError) refetchUser();
-    if (subError) checkSubscription();
-    resetError();
-  }, [isUserError, refetchUser, subError, checkSubscription, resetError]);
+  const { isPro, isLoading: isSubLoading, subError, setPro, handleRetry } = useAppSubscription();
 
   const handleUpgrade = useCallback(() => {
-    // In a real app, trigger RevenueCat here
     feedback.impact();
     Alert.alert("Upgrade", "In a real app, this would open the App Store checkout.", [
       { text: "Cancel", style: "cancel" },
       { text: "Demo Upgrade", onPress: () => setPro(true) },
     ]);
   }, [setPro]);
+
+  const handleGlobalRetry = useCallback(() => {
+    if (isUserError) refetchUser();
+    handleRetry();
+  }, [isUserError, refetchUser, handleRetry]);
 
   const handleExplore = useCallback(() => {
     console.log("Explore");
@@ -81,7 +77,7 @@ export default function Home() {
               {isUserLoading ? (
                 <LiquidSkeleton width={120} height={24} radius={8} className="mt-2" />
               ) : isUserError ? (
-                <TouchableOpacity onPress={handleRetry}>
+                <TouchableOpacity onPress={handleGlobalRetry}>
                   <Text className="text-destructive text-sm font-bold">
                     Failed to load profile. Tap to retry.
                   </Text>
@@ -99,7 +95,7 @@ export default function Home() {
               <Text className="text-destructive font-bold text-center">{subError}</Text>
               <Button
                 title="Retry Subscription Sync"
-                onPress={handleRetry}
+                onPress={handleGlobalRetry}
                 variant="outline"
                 className="h-10 py-0"
               />
@@ -138,28 +134,17 @@ export default function Home() {
 
           {/* Premium Section */}
           <View className="space-y-6">
-            <View className="flex-row items-center justify-between px-1">
-              <Text className="text-sm font-bold text-muted-foreground uppercase tracking-widest">
-                Premium Features
-              </Text>
-              {isPro && (
-                <View className="bg-primary/10 px-2 py-0.5 rounded-full">
-                  <Text className="text-[10px] font-black text-primary uppercase">Pro Active</Text>
-                </View>
-              )}
-            </View>
+            <Text className="text-sm font-bold text-muted-foreground uppercase tracking-widest px-1">
+              Premium Features
+            </Text>
 
-            {isPro ? (
-              <Card variant="default" className="p-6 bg-primary/5 border-primary/20">
-                <Text className="text-lg font-bold text-foreground">Advanced Analytics</Text>
-                <Text className="text-muted-foreground mt-1">
-                  You now have access to real-time data streaming and advanced architectural
-                  metrics.
-                </Text>
-              </Card>
-            ) : (
-              <Paywall onUpgrade={handleUpgrade} isLoading={isSubLoading} />
-            )}
+            <PremiumFeatureCard
+              isPro={isPro}
+              title="Advanced Analytics"
+              description="You now have access to real-time data streaming and advanced architectural metrics."
+            />
+
+            {!isPro && <Paywall onUpgrade={handleUpgrade} isLoading={isSubLoading} />}
           </View>
 
           {/* New Pro-Only Feature: System Insights */}

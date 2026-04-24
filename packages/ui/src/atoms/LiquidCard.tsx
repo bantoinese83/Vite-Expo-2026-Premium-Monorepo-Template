@@ -31,12 +31,12 @@ export const LiquidCard = memo(
           delay,
           easing: (t) => t * (2 - t), // Subtle ease out
         }}
+        {...(props as any)}
         className={cn(
           "p-6 rounded-3xl border border-white/10 shadow-2xl overflow-hidden",
           glass ? "bg-card/80 backdrop-blur-xl" : "bg-card",
           className,
         )}
-        {...props}
       >
         {/* Liquid Metal Accent - Subtle top highlight */}
         <View className="absolute top-0 left-0 right-0 h-[1px] bg-white/20" />

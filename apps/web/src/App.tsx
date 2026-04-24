@@ -1,22 +1,11 @@
 /// <reference types="nativewind/types" />
-import { useSubscription } from "@repo/api";
-import { Button, Card, FeatureGate, InfoSection } from "@repo/ui";
-import { useCallback, useEffect } from "react";
+import { useAppSubscription } from "@repo/api";
+import { Button, Card, FeatureGate, InfoSection, PremiumFeatureCard } from "@repo/ui";
+import { useCallback } from "react";
 import { ScrollView, Text, View } from "react-native";
 
 function App() {
-  const {
-    isPro,
-    isLoading,
-    error: subError,
-    setPro,
-    checkSubscription,
-    resetError,
-  } = useSubscription();
-
-  useEffect(() => {
-    checkSubscription();
-  }, [checkSubscription]);
+  const { isPro, isLoading, subError, setPro, handleRetry } = useAppSubscription();
 
   const handleUpgrade = useCallback(() => {
     // In a real app, trigger Stripe here
@@ -25,11 +14,6 @@ function App() {
     );
     if (confirm) setPro(true);
   }, [setPro]);
-
-  const handleRetry = useCallback(() => {
-    checkSubscription();
-    resetError();
-  }, [checkSubscription, resetError]);
 
   const handleGetStarted = useCallback(() => {
     console.log("Get Started");
@@ -127,7 +111,13 @@ function App() {
             </Text>
           </View>
 
-          <View className="max-w-4xl mx-auto w-full">
+          <View className="max-w-4xl mx-auto w-full space-y-8">
+            <PremiumFeatureCard
+              isPro={isPro}
+              title="Monorepo Telemetry"
+              description="Unified dashboard for tracking package usage, build metrics, and shared logic efficiency."
+            />
+
             <FeatureGate
               isPro={isPro}
               onUpgrade={handleUpgrade}
