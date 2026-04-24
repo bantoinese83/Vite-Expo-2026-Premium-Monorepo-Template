@@ -13,6 +13,9 @@
     </style>
   </head>
   <body class="bg-black">
+    <script>
+      window.process = { env: { NODE_ENV: 'development' } };
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

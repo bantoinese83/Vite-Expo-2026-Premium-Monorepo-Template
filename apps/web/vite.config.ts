@@ -7,6 +7,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   define: {
     __DEV__: process.env.NODE_ENV !== "production",
+    "process.env": {},
+    global: "window",
   },
   resolve: {
     alias: {
@@ -34,16 +36,7 @@ export default defineConfig({
       loader: {
         ".js": "jsx",
       },
-      resolveExtensions: [
-        ".web.js",
-        ".web.ts",
-        ".web.tsx",
-        ".js",
-        ".jsx",
-        ".ts",
-        ".tsx",
-        ".mjs",
-      ],
+      resolveExtensions: [".web.js", ".web.ts", ".web.tsx", ".js", ".jsx", ".ts", ".tsx", ".mjs"],
     },
   },
 });
