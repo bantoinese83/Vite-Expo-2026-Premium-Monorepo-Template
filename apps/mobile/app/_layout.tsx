@@ -25,19 +25,23 @@ const asyncStoragePersister = createAsyncStoragePersister({
   storage: AsyncStorage,
 });
 
+import { GlobalErrorBoundary } from "@repo/ui";
+
 function RootLayout() {
   return (
-    <PostHogProvider
-      apiKey={process.env.EXPO_PUBLIC_POSTHOG_KEY || "phc_dummy_key"}
-      options={{ host: "https://app.posthog.com" }}
-    >
-      <PersistQueryClientProvider
-        client={queryClient}
-        persistOptions={{ persister: asyncStoragePersister }}
+    <GlobalErrorBoundary>
+      <PostHogProvider
+        apiKey={process.env.EXPO_PUBLIC_POSTHOG_KEY || "phc_dummy_key"}
+        options={{ host: "https://app.posthog.com" }}
       >
-        <Stack screenOptions={{ headerShown: false }} />
-      </PersistQueryClientProvider>
-    </PostHogProvider>
+        <PersistQueryClientProvider
+          client={queryClient}
+          persistOptions={{ persister: asyncStoragePersister }}
+        >
+          <Stack screenOptions={{ headerShown: false }} />
+        </PersistQueryClientProvider>
+      </PostHogProvider>
+    </GlobalErrorBoundary>
   );
 }
 

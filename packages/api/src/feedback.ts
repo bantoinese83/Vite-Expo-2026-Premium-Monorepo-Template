@@ -12,7 +12,7 @@ export const feedback = {
       if (Platform.OS !== "web") {
         await Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
       }
-    } catch (e) {
+    } catch (_e) {
       // Safe fallback for environments where RN/Haptics aren't available
     }
   },
@@ -23,7 +23,7 @@ export const feedback = {
       if (Platform.OS !== "web") {
         await Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
       }
-    } catch (e) {
+    } catch (_e) {
       // Safe fallback
     }
   },
@@ -34,7 +34,7 @@ export const feedback = {
       if (Platform.OS !== "web") {
         await Haptics.selectionAsync();
       }
-    } catch (e) {
+    } catch (_e) {
       // Safe fallback
     }
   },

@@ -1,6 +1,7 @@
 import * as Sentry from "@sentry/react";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import posthog from "posthog-js";
 import React from "react";
@@ -34,11 +35,16 @@ const persister = createSyncStoragePersister({
   storage: window.localStorage,
 });
 
+import { GlobalErrorBoundary } from "@repo/ui";
+
 // biome-ignore lint/style/noNonNullAssertion: Root element is required by React
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
-      <App />
-    </PersistQueryClientProvider>
+    <GlobalErrorBoundary>
+      <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
+        <App />
+        <ReactQueryDevtools initialIsOpen={false} position="bottom" />
+      </PersistQueryClientProvider>
+    </GlobalErrorBoundary>
   </React.StrictMode>,
 );

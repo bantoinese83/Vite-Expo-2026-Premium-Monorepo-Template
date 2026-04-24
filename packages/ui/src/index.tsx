@@ -3,6 +3,8 @@ export * from "./atoms/Card";
 export * from "./atoms/LiquidCard";
 export * from "./atoms/LiquidButton";
 export * from "./atoms/LiquidSkeleton";
+export * from "./atoms/Image";
 export * from "./molecules/InfoSection";
 export * from "./molecules/Paywall";
 export * from "./molecules/FeatureGate";
+export * from "./organisms/ErrorBoundary";

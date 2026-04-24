@@ -1,5 +1,3 @@
-import { db } from "./index";
-import { faker } from "@faker-js/faker";
 import "dotenv/config";
 
 async function main() {
