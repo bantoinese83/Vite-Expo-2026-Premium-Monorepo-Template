@@ -23,7 +23,6 @@ export const FeatureGate = memo(
           {children}
         </View>
         <View className="absolute inset-0 items-center justify-center p-4">
-          {" "}
           <Paywall
             title={title}
             description={description}

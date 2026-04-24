@@ -35,7 +35,7 @@ export const LiquidSkeleton = memo(
           // biome-ignore lint/suspicious/noExplicitAny: Moti Skeleton types are strict union of numbers
           radius={radius as any}
           backgroundColor="#1a1a1a"
-        />{" "}
+        />
       </View>
     );
   },
