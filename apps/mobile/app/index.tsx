@@ -2,17 +2,43 @@ import { useSubscription, useUser } from "@repo/api";
 import { feedback } from "@repo/api/src/feedback";
 import { Button, Card, FeatureGate, InfoSection, LiquidSkeleton, Paywall } from "@repo/ui";
 import { useCallback, useEffect } from "react";
-import { Alert, SafeAreaView, ScrollView, StatusBar, Text, View } from "react-native";
+import {
+  Alert,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 const SCROLL_VIEW_CONTENT_STYLE = { paddingBottom: 40 };
 
 export default function Home() {
-  const { data: user, isLoading: isUserLoading } = useUser("1");
-  const { isPro, isLoading: isSubLoading, setPro, checkSubscription } = useSubscription();
+  const {
+    data: user,
+    isLoading: isUserLoading,
+    isError: isUserError,
+    refetch: refetchUser,
+  } = useUser("1");
+  const {
+    isPro,
+    isLoading: isSubLoading,
+    error: subError,
+    setPro,
+    checkSubscription,
+    resetError,
+  } = useSubscription();
 
   useEffect(() => {
     checkSubscription();
   }, [checkSubscription]);
+
+  const handleRetry = useCallback(() => {
+    if (isUserError) refetchUser();
+    if (subError) checkSubscription();
+    resetError();
+  }, [isUserError, refetchUser, subError, checkSubscription, resetError]);
 
   const handleUpgrade = useCallback(() => {
     // In a real app, trigger RevenueCat here
@@ -54,6 +80,12 @@ export default function Home() {
             <View accessibilityLiveRegion="polite">
               {isUserLoading ? (
                 <LiquidSkeleton width={120} height={24} radius={8} className="mt-2" />
+              ) : isUserError ? (
+                <TouchableOpacity onPress={handleRetry}>
+                  <Text className="text-destructive text-sm font-bold">
+                    Failed to load profile. Tap to retry.
+                  </Text>
+                </TouchableOpacity>
               ) : (
                 <Text className="text-xl text-primary font-medium">
                   {user?.name || "Developer"}
@@ -61,6 +93,18 @@ export default function Home() {
               )}
             </View>
           </View>
+
+          {subError && (
+            <Card className="p-4 bg-destructive/10 border-destructive/20 space-y-2">
+              <Text className="text-destructive font-bold text-center">{subError}</Text>
+              <Button
+                title="Retry Subscription Sync"
+                onPress={handleRetry}
+                variant="outline"
+                className="h-10 py-0"
+              />
+            </Card>
+          )}
 
           {/* Quick Actions */}
           <Card className="p-8">

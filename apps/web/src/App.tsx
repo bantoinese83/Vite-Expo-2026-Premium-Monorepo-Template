@@ -1,11 +1,18 @@
+/// <reference types="nativewind/types" />
 import { useSubscription } from "@repo/api";
 import { Button, Card, FeatureGate, InfoSection } from "@repo/ui";
-/// <reference types="nativewind/types" />
 import { useCallback, useEffect } from "react";
 import { ScrollView, Text, View } from "react-native";
 
 function App() {
-  const { isPro, isLoading, setPro, checkSubscription } = useSubscription();
+  const {
+    isPro,
+    isLoading,
+    error: subError,
+    setPro,
+    checkSubscription,
+    resetError,
+  } = useSubscription();
 
   useEffect(() => {
     checkSubscription();
@@ -18,6 +25,12 @@ function App() {
     );
     if (confirm) setPro(true);
   }, [setPro]);
+
+  const handleRetry = useCallback(() => {
+    checkSubscription();
+    resetError();
+  }, [checkSubscription, resetError]);
+
   const handleGetStarted = useCallback(() => {
     console.log("Get Started");
   }, []);
@@ -53,6 +66,18 @@ function App() {
             <Button title="Documentation" onPress={handleDocs} variant="secondary" />
           </View>
         </View>
+
+        {subError && (
+          <Card className="max-w-xl mx-auto p-6 bg-destructive/10 border-destructive/20 items-center space-y-4">
+            <Text className="text-destructive font-bold text-lg text-center">{subError}</Text>
+            <Button
+              title="Retry Subscription Check"
+              onPress={handleRetry}
+              variant="outline"
+              className="px-8"
+            />
+          </Card>
+        )}
 
         {/* Feature Grid */}
         <View className="grid grid-cols-1 md:grid-cols-2 gap-8">
