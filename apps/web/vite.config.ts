@@ -15,8 +15,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "react-native": "react-native-web",
-      "lucide-react-native": path.resolve(__dirname, "../../node_modules/lucide-react"),
+      "react-native": path.resolve(__dirname, "node_modules/react-native-web"),
+      "lucide-react-native": path.resolve(__dirname, "node_modules/lucide-react"),
       "@repo/ui": path.resolve(__dirname, "../../packages/ui/src"),
       "@repo/api": path.resolve(__dirname, "../../packages/api/src"),
       "@repo/db": path.resolve(__dirname, "../../packages/db/src"),
