@@ -20,7 +20,7 @@ export const useSubscription = create<SubscriptionState>((set) => ({
     try {
       // Mock API call - Replace with RevenueCat/Stripe logic
       await new Promise((resolve) => setTimeout(resolve, 800));
-      // set({ isPro: true }); 
+      // set({ isPro: true });
     } finally {
       set({ isLoading: false });
     }

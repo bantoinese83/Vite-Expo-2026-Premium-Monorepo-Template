@@ -1,5 +1,5 @@
-import { z } from "zod";
 import { useQuery } from "@tanstack/react-query";
+import { z } from "zod";
 
 export * from "./env";
 export * from "./subscriptions";
@@ -18,7 +18,7 @@ const API_DELAY = 1000;
 export const fetchUser = async (id: string): Promise<User> => {
   // Security: Validate ID format to prevent unexpected behavior or injection risks
   const validatedId = z.string().min(1).parse(id);
-  
+
   await new Promise((resolve) => setTimeout(resolve, API_DELAY));
   return {
     id: validatedId,

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { View, ViewProps } from "react-native";
+import { View, type ViewProps } from "react-native";
 
 interface CardProps {
   children: ViewProps["children"];
@@ -14,19 +14,16 @@ const variantStyles = {
   ghost: () => "bg-transparent border-none shadow-none",
 };
 
-export const Card = memo(({ 
-  children, 
-  className = "", 
-  variant = "default",
-  glass = true 
-}: CardProps) => {
-  return (
-    <View
-      className={`p-6 rounded-3xl border border-white/10 shadow-2xl ${variantStyles[variant](glass)} ${className}`}
-    >
-      {children}
-    </View>
-  );
-});
+export const Card = memo(
+  ({ children, className = "", variant = "default", glass = true }: CardProps) => {
+    return (
+      <View
+        className={`p-6 rounded-3xl border border-white/10 shadow-2xl ${variantStyles[variant](glass)} ${className}`}
+      >
+        {children}
+      </View>
+    );
+  },
+);
 
 Card.displayName = "Card";

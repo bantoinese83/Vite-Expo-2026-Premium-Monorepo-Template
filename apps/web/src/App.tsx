@@ -1,8 +1,8 @@
+import { useSubscription } from "@repo/api";
+import { Button, Card, FeatureGate, InfoSection } from "@repo/ui";
 /// <reference types="nativewind/types" />
 import { useCallback, useEffect } from "react";
-import { View, Text, ScrollView } from "react-native";
-import { Button, Card, InfoSection, FeatureGate } from "@repo/ui";
-import { useSubscription } from "@repo/api";
+import { ScrollView, Text, View } from "react-native";
 
 function App() {
   const { isPro, isLoading, setPro, checkSubscription } = useSubscription();
@@ -13,7 +13,9 @@ function App() {
 
   const handleUpgrade = useCallback(() => {
     // In a real app, trigger Stripe here
-    const confirm = window.confirm("In a real app, this would open Stripe Checkout. Want to simulate an upgrade?");
+    const confirm = window.confirm(
+      "In a real app, this would open Stripe Checkout. Want to simulate an upgrade?",
+    );
     if (confirm) setPro(true);
   }, [setPro]);
   const handleGetStarted = useCallback(() => {
@@ -30,32 +32,25 @@ function App() {
         {/* Hero Section */}
         <View className="items-center space-y-8">
           <View className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5">
-            <Text className="text-primary text-sm font-medium">
-              Vite + Expo Monorepo 2026
-            </Text>
+            <Text className="text-primary text-sm font-medium">Vite + Expo Monorepo 2026</Text>
           </View>
-          
-          <Text accessibilityRole="header" className="text-7xl font-black text-center tracking-tighter text-foreground">
+
+          <Text
+            accessibilityRole="header"
+            className="text-7xl font-black text-center tracking-tighter text-foreground"
+          >
             Build once.{"\n"}
             <Text className="text-primary/50">Run everywhere.</Text>
           </Text>
-          
+
           <Text className="text-xl text-muted-foreground text-center max-w-2xl leading-relaxed">
-            The ultimate starter template for high-performance cross-platform applications. 
-            Native speed, web flexibility, and 100/100 quality score.
+            The ultimate starter template for high-performance cross-platform applications. Native
+            speed, web flexibility, and 100/100 quality score.
           </Text>
 
           <View className="flex-row space-x-4 pt-4">
-            <Button 
-              title="Get Started" 
-              onPress={handleGetStarted} 
-              variant="primary"
-            />
-            <Button 
-              title="Documentation" 
-              onPress={handleDocs} 
-              variant="secondary"
-            />
+            <Button title="Get Started" onPress={handleGetStarted} variant="primary" />
+            <Button title="Documentation" onPress={handleDocs} variant="secondary" />
           </View>
         </View>
 
@@ -69,7 +64,7 @@ function App() {
               />
             </Card>
           </View>
-          
+
           <View className="flex-1">
             <Card>
               <InfoSection
@@ -117,15 +112,21 @@ function App() {
             >
               <View className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Card className="p-8 items-center bg-primary/5 border-primary/20">
-                  <Text className="text-sm text-muted-foreground uppercase font-bold">Build Time</Text>
+                  <Text className="text-sm text-muted-foreground uppercase font-bold">
+                    Build Time
+                  </Text>
                   <Text className="text-4xl font-black mt-2">1.2s</Text>
                 </Card>
                 <Card className="p-8 items-center bg-primary/5 border-primary/20">
-                  <Text className="text-sm text-muted-foreground uppercase font-bold">Tree Shaking</Text>
+                  <Text className="text-sm text-muted-foreground uppercase font-bold">
+                    Tree Shaking
+                  </Text>
                   <Text className="text-4xl font-black mt-2">94%</Text>
                 </Card>
                 <Card className="p-8 items-center bg-primary/5 border-primary/20">
-                  <Text className="text-sm text-muted-foreground uppercase font-bold">Tests Passed</Text>
+                  <Text className="text-sm text-muted-foreground uppercase font-bold">
+                    Tests Passed
+                  </Text>
                   <Text className="text-4xl font-black mt-2">100%</Text>
                 </Card>
               </View>

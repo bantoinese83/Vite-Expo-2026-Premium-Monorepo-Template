@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint:ox": "oxlint src",
+    "lint": "biome check src",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

@@ -5,8 +5,7 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
-    "lint": "eslint .",
-    "lint:ox": "oxlint src",
+    "lint": "biome check src",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

@@ -5,18 +5,20 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
-    "lint:ox": "oxlint src",
+    "lint": "biome check src",
     "type-check": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:push": "drizzle-kit push"
   },
   "dependencies": {
-    "drizzle-orm": "^0.30.0",
+    "@neondatabase/serverless": "^1.1.0",
+    "drizzle-orm": "^0.45.2",
     "postgres": "^3.4.4",
     "zod": "^3.23.0"
   },
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
+    "@types/node": "^25.6.0",
     "drizzle-kit": "^0.21.0",
     "typescript": "^5.4.0"
   }

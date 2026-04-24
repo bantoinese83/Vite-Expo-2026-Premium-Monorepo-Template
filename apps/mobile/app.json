@@ -18,10 +18,7 @@
       "bundler": "metro",
       "favicon": "./assets/favicon.png"
     },
-    "plugins": [
-      "expo-router",
-      ["nativewind/babel", { "tailwindConfig": "./tailwind.config.js" }]
-    ],
+    "plugins": ["expo-router", ["nativewind/babel", { "tailwindConfig": "./tailwind.config.js" }]],
     "experiments": {
       "typedRoutes": true
     }

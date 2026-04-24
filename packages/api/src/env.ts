@@ -7,8 +7,11 @@ const envSchema = z.object({
 
 // Since process.env isn't directly available in standard ways on all platforms
 // in Expo/Vite without specific plugins, we do a best-effort merge.
-const processEnv = typeof process !== 'undefined' ? process.env : {};
-const importMetaEnv = typeof import.meta !== 'undefined' ? (import.meta as any).env : {};
+const processEnv = typeof process !== "undefined" ? process.env : {};
+const importMetaEnv =
+  typeof import.meta !== "undefined"
+    ? (import.meta as unknown as { env: Record<string, unknown> }).env
+    : {};
 
 export const env = envSchema.parse({
   ...processEnv,

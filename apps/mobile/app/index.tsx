@@ -1,7 +1,9 @@
+import { useSubscription, useUser } from "@repo/api";
+import { feedback } from "@repo/api/src/feedback";
+import {
+  Button, Card, FeatureGate, InfoSection, LiquidSkeleton, Paywall } from "@repo/ui";
 import { useCallback, useEffect } from "react";
-import { View, Text, SafeAreaView, ScrollView, StatusBar, Alert } from "react-native";
-import { InfoSection, Card, Button, Paywall, FeatureGate } from "@repo/ui";
-import { useUser, useSubscription } from "@repo/api";
+import { Alert, SafeAreaView, ScrollView, StatusBar, Text, View } from "react-native";
 
 const SCROLL_VIEW_CONTENT_STYLE = { paddingBottom: 40 };
 
@@ -15,6 +17,7 @@ export default function Home() {
 
   const handleUpgrade = useCallback(() => {
     // In a real app, trigger RevenueCat here
+    feedback.impact();
     Alert.alert("Upgrade", "In a real app, this would open the App Store checkout.", [
       { text: "Cancel", style: "cancel" },
       { text: "Demo Upgrade", onPress: () => setPro(true) },
@@ -36,19 +39,22 @@ export default function Home() {
         <View className="px-6 py-12 space-y-12">
           {/* Header */}
           <View className="space-y-4">
-            <View 
+            <View
               importantForAccessibility="no-hide-descendants"
               accessibilityElementsHidden={true}
               className="w-12 h-12 rounded-2xl bg-primary items-center justify-center"
             >
               <Text className="text-primary-foreground text-2xl font-black">M</Text>
             </View>
-            <Text accessibilityRole="header" className="text-4xl font-black text-foreground tracking-tighter">
+            <Text
+              accessibilityRole="header"
+              className="text-4xl font-black text-foreground tracking-tighter"
+            >
               Welcome Back
             </Text>
             <View accessibilityLiveRegion="polite">
               {isUserLoading ? (
-                <View accessibilityLabel="Loading profile..." className="h-6 w-32 bg-muted rounded animate-pulse" />
+                <LiquidSkeleton width={120} height={24} radius={8} className="mt-2" />
               ) : (
                 <Text className="text-xl text-primary font-medium">
                   {user?.name || "Developer"}
@@ -69,24 +75,20 @@ export default function Home() {
 
           {/* Stats/Cards */}
           <View className="flex-row space-x-4">
-            <View 
-              accessible={true}
-              accessibilityLabel="100 Quality Score"
-              className="flex-1"
-            >
+            <View accessible={true} accessibilityLabel="100 Quality Score" className="flex-1">
               <Card className="p-6 items-center justify-center space-y-2">
                 <Text className="text-3xl font-black text-foreground">100</Text>
-                <Text className="text-muted-foreground text-xs uppercase font-bold tracking-widest">Quality</Text>
+                <Text className="text-muted-foreground text-xs uppercase font-bold tracking-widest">
+                  Quality
+                </Text>
               </Card>
             </View>
-            <View 
-              accessible={true}
-              accessibilityLabel="0 Errors reported"
-              className="flex-1"
-            >
+            <View accessible={true} accessibilityLabel="0 Errors reported" className="flex-1">
               <Card className="p-6 items-center justify-center space-y-2">
                 <Text className="text-3xl font-black text-foreground">0</Text>
-                <Text className="text-muted-foreground text-xs uppercase font-bold tracking-widest">Errors</Text>
+                <Text className="text-muted-foreground text-xs uppercase font-bold tracking-widest">
+                  Errors
+                </Text>
               </Card>
             </View>
           </View>
@@ -108,14 +110,12 @@ export default function Home() {
               <Card variant="default" className="p-6 bg-primary/5 border-primary/20">
                 <Text className="text-lg font-bold text-foreground">Advanced Analytics</Text>
                 <Text className="text-muted-foreground mt-1">
-                  You now have access to real-time data streaming and advanced architectural metrics.
+                  You now have access to real-time data streaming and advanced architectural
+                  metrics.
                 </Text>
               </Card>
             ) : (
-              <Paywall 
-                onUpgrade={handleUpgrade} 
-                isLoading={isSubLoading}
-              />
+              <Paywall onUpgrade={handleUpgrade} isLoading={isSubLoading} />
             )}
           </View>
 
@@ -149,11 +149,7 @@ export default function Home() {
           </View>
 
           {/* Logout/Action */}
-          <Button 
-            title="Sign Out" 
-            onPress={handleSignOut} 
-            variant="outline"
-          />
+          <Button title="Sign Out" onPress={handleSignOut} variant="outline" />
         </View>
       </ScrollView>
     </SafeAreaView>
